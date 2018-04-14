@@ -1,0 +1,17 @@
+extends layout
+
+block content
+
+    h1 Sign Up
+
+    form(method='POST' action='/register/newUser')
+        div
+            label(for='email') Email:
+            input(type='email', placeholder='loser@notNSA.com', name='email')
+        div
+            label(for='username') Username:
+            input(type='text', placeholder='loser', name='username')
+        div
+            label(for='password') Password:
+            input(type='password', name='password')
+        button(type='submit') Get this over with

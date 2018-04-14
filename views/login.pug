@@ -1,0 +1,13 @@
+extends layout
+
+
+block content
+
+    form(method='POST' action='/login')
+        div
+            label(for='username') Username:
+            input(type='text', placeholder='username', name='username')
+        div
+            label(for='password') Password:
+            input(type='password', name='password')
+        button(type='submit') Login
