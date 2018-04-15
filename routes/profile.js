@@ -1,17 +1,9 @@
 const express = require('express');
+const requiresLogin = require('../requiresLogin');
 const router = express.Router();
 
 const User = require('../services/userService');
-
-let requiresLogin = (req, res, next) => {
-
-    if(req.session && req.session.userId){
-        next();
-    }else{
-        res.redirect('/login');
-    }
-
-}
+const Post = require('../services/postService');
 
 router.get('/', requiresLogin, async (req, res) => {
 
@@ -29,7 +21,22 @@ router.get('/', requiresLogin, async (req, res) => {
 
     }
 
-    res.render('profile', user);
+    let posts;
+
+    try {
+
+        posts = await Post.getPosts({usrId: id});
+
+    }catch(error){
+
+        console.log(error);
+        res.redirect('/');
+
+    }
+
+    console.log(posts);
+
+    res.render('profile', {user: user, posts: posts});
 
 });
 

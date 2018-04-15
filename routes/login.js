@@ -44,7 +44,7 @@ router.post('/', async (req, res) => {
 
         console.log('Authenicated!');
         req.session.userId = user._id;
-        res.redirect('/');
+        res.redirect('/profile');
 
     }else{
 

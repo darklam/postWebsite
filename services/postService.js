@@ -5,7 +5,7 @@ const Post = require('../models/postModel');
 _this = this;
 
 
-exports.createpost = async (post) => {
+exports.createPost = async (post) => {
 
     let newpost = new Post(post);
 
@@ -20,19 +20,37 @@ exports.createpost = async (post) => {
 
 }
 
-exports.getpost = async (query) => {
+exports.getPost = async (query) => {
 
     let result;
 
     try{
 
-        result = await Post.find(query);
+        result = await Post.findOne(query);
 
         return result;
 
     }catch(error){
 
         throw Error('Problem searching for post: ', error);
+
+    }
+
+}
+
+exports.getPosts = async (query) => {
+
+    let results;
+
+    try {
+
+        results = await Post.find(query);
+
+        return results;
+
+    }catch(error) {
+
+        throw Error('Error searching for posts: ', error);
 
     }
 

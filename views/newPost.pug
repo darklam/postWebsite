@@ -1,0 +1,15 @@
+extends layout
+
+block content
+
+    h1 Welcome #{username}! Create a post below!
+
+    form(method='POST' action='/newPost' id='postForm')
+
+        div
+            textarea(name="content", cols="30", rows="10")
+
+        div
+            button(type='submit') Post
+
+    
