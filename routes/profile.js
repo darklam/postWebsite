@@ -26,6 +26,7 @@ router.get('/', requiresLogin, async (req, res) => {
     try {
 
         posts = await Post.getPosts({usrId: id});
+        console.log(posts);
 
     }catch(error){
 

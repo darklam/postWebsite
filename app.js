@@ -19,7 +19,6 @@ const userService = require('./services/userService');
 const postService = require('./services/postService');
 
 
-
 mongoose.connect('mongodb://localhost/postWebsite', {
     user: 'john',
     pass: 'lawl'
@@ -50,7 +49,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session(
     {
-        cookie: {maxAge: 60000},
         secret: 'lawl',
         resave: true,
         saveUninitialized: false
